@@ -88,31 +88,42 @@
   </v-app>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+<script lang='ts'>
+import { Component, Vue } from 'nuxt-property-decorator'
+// eslint-disable-next-line
+class Icon {
+  icon:string= '';
+  title:string= '';
+  to:string= '';
+}
+
+@Component({
+})
+export default class LogoComponent extends Vue {
+  clipped:boolean= false;
+  drawer:boolean= false;
+  fixed:boolean= false;
+  items: Icon[] = [          
+    {
+      icon: 'mdi-chart-bubble',
+      title: 'Inspire',
+      to: '/inspire'
+    },
+    {
+
+      icon: 'mdi-apps',
+      title: 'Welcome',
+      to: '/'
+    },
+    {
+      icon: 'mdi-chart-bubble',
+      title: 'Inspire',
+      to: '/inspire'
     }
-  }
+  ];
+  miniVariant:boolean= false;
+  right:boolean= true;
+  rightDrawer:boolean= false;
+  title:string= 'Vuetify.js'
 }
 </script>

@@ -26,14 +26,13 @@ export default class LogoComponent extends Vue {
   pageNotFound:string= '404 Not Found';
   otherError:string='An error occurred';
 
-  @Prop({default:null})
+  @Prop({ default: null })
   error!:Error
-    
+
   head () {
     const title = this.error.statusCode === 404 ? this.pageNotFound : this.otherError
-    return {title}
+    return { title }
   }
-  
 }
 </script>
 
