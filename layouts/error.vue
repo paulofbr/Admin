@@ -13,17 +13,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue,Prop } from 'nuxt-property-decorator'
+import { Component, Vue, Prop } from 'nuxt-property-decorator'
 
 interface Error{
   statusCode:number
 }
 
 @Component({
-  layout:'empty'
+  layout: 'empty'
 })
 export default class LogoComponent extends Vue {
-  
   pageNotFound:string= '404 Not Found';
   otherError:string='An error occurred';
 
