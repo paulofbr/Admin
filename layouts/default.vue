@@ -2,14 +2,14 @@
   <v-app dark>
     <v-navigation-drawer
       v-model="state.drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
+      :mini-variant="state.miniVariant"
+      :clipped="state.clipped"
+      state.fixed
       app
     >
       <v-list>
         <v-list-item
-          v-for="(item, i) in items"
+          v-for="(item, i) in state.items"
           :key="i"
           :to="item.to"
           router
@@ -25,26 +25,26 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
-      :clipped-left="clipped"
-      fixed
+      :clipped-left="state.clipped"
+      state.fixed
       app
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon @click.stop="state.drawer = !state.drawer" />
       <v-btn
         icon
-        @click.stop="miniVariant = !miniVariant"
+        @click.stop="state.miniVariant = !state.miniVariant"
       >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+        <v-icon>mdi-{{ `chevron-${state.miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
       <v-btn
         icon
-        @click.stop="clipped = !clipped"
+        @click.stop="state.clipped = !state.clipped"
       >
         <v-icon>mdi-application</v-icon>
       </v-btn>
       <v-btn
         icon
-        @click.stop="fixed = !fixed"
+        @click.stop="state.fixed = !state.fixed"
       >
         <v-icon>mdi-minus</v-icon>
       </v-btn>
@@ -52,7 +52,7 @@
       <v-spacer />
       <v-btn
         icon
-        @click.stop="rightDrawer = !rightDrawer"
+        @click.stop="state.rightDrawer = !state.rightDrawer"
       >
         <v-icon>mdi-menu</v-icon>
       </v-btn>
@@ -63,13 +63,13 @@
       </v-container>
     </v-content>
     <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
+      v-model="state.rightDrawer"
+      :right="state.right"
       temporary
-      fixed
+      state.fixed
     >
       <v-list>
-        <v-list-item @click.native="right = !right">
+        <v-list-item @click.native="state.right = !state.right">
           <v-list-item-action>
             <v-icon light>
               mdi-repeat
@@ -80,7 +80,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-footer
-      :fixed="fixed"
+      :fixed="state.fixed"
       app
     >
       <span>&copy; 2019</span>
@@ -96,7 +96,7 @@ import App from '../store/App'// eslint-disable-line no-unused-vars
 })
 export default class LogoComponent extends Vue {
   get state ():App {
-    return this.$store.state
+    return this.$store.state as App
   }
 }
 </script>
