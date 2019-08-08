@@ -1,15 +1,15 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      v-model="state.drawer"
-      :mini-variant="state.miniVariant"
-      :clipped="state.clipped"
-      state.fixed
+      v-model="appStore.drawer"
+      :mini-variant="appStore.miniVariant"
+      :clipped="appStore.clipped"
+      appStore.fixed
       app
     >
       <v-list>
         <v-list-item
-          v-for="(item, i) in state.items"
+          v-for="(item, i) in appStore.items"
           :key="i"
           :to="item.to"
           router
@@ -25,26 +25,26 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
-      :clipped-left="state.clipped"
-      state.fixed
+      :clipped-left="appStore.clipped"
+      appStore.fixed
       app
     >
-      <v-app-bar-nav-icon @click.stop="state.drawer = !state.drawer" />
+      <v-app-bar-nav-icon @click.stop="appStore.drawer = !appStore.drawer" />
       <v-btn
         icon
-        @click.stop="state.miniVariant = !state.miniVariant"
+        @click.stop="appStore.miniVariant = !appStore.miniVariant"
       >
-        <v-icon>mdi-{{ `chevron-${state.miniVariant ? 'right' : 'left'}` }}</v-icon>
+        <v-icon>mdi-{{ `chevron-${appStore.miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
       <v-btn
         icon
-        @click.stop="state.clipped = !state.clipped"
+        @click.stop="appStore.clipped = !appStore.clipped"
       >
         <v-icon>mdi-application</v-icon>
       </v-btn>
       <v-btn
         icon
-        @click.stop="state.fixed = !state.fixed"
+        @click.stop="appStore.fixed = !appStore.fixed"
       >
         <v-icon>mdi-minus</v-icon>
       </v-btn>
@@ -52,7 +52,7 @@
       <v-spacer />
       <v-btn
         icon
-        @click.stop="state.rightDrawer = !state.rightDrawer"
+        @click.stop="appStore.rightDrawer = !appStore.rightDrawer"
       >
         <v-icon>mdi-menu</v-icon>
       </v-btn>
@@ -63,13 +63,13 @@
       </v-container>
     </v-content>
     <v-navigation-drawer
-      v-model="state.rightDrawer"
-      :right="state.right"
+      v-model="appStore.rightDrawer"
+      :right="appStore.right"
       temporary
-      state.fixed
+      appStore.fixed
     >
       <v-list>
-        <v-list-item @click.native="state.right = !state.right">
+        <v-list-item @click.native="appStore.right = !appStore.right">
           <v-list-item-action>
             <v-icon light>
               mdi-repeat
@@ -80,7 +80,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-footer
-      :fixed="state.fixed"
+      :fixed="appStore.fixed"
       app
     >
       <span>&copy; 2019</span>
@@ -90,13 +90,14 @@
 
 <script lang='ts'>
 import { Component, Vue } from 'nuxt-property-decorator'
-import App from '../store/App'// eslint-disable-line no-unused-vars
+import { getModule } from 'vuex-module-decorators'
+import App from '../store/App'
 
 @Component({
 })
 export default class LogoComponent extends Vue {
-  get state ():App {
-    return this.$store.state as App
+  get appStore ():App {
+    return getModule(App, this.$store)
   }
 }
 </script>

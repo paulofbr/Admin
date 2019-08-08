@@ -1,14 +1,14 @@
 <template>
   <v-navigation-drawer
-    v-model="state.drawer"
-    :mini-variant="state.miniVariant"
-    :clipped="state.clipped"
-    state.fixed
+    v-model="appStore.drawer"
+    :mini-variant="appStore.miniVariant"
+    :clipped="appStore.clipped"
+    appStore.fixed
     app
   >
     <v-list>
       <v-list-item
-        v-for="(item, i) in state.items"
+        v-for="(item, i) in appStore.items"
         :key="i"
         :to="item.to"
         router
@@ -28,10 +28,11 @@
 <script lang='ts'>
 import { Component, Vue } from 'nuxt-property-decorator'
 import  App from '../store/App';
+import { getModule } from 'vuex-module-decorators';
 @Component
 export default class LogoComponent extends Vue {
-  get state():App{
-    return this.$store.state as App
+  get appStore():App{
+    return getModule(App,this.$store);
   }
 }
 </script>

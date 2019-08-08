@@ -1,7 +1,7 @@
-import { Module, VuexModule } from 'vuex-module-decorators'
+import { Module, VuexModule, Mutation } from 'vuex-module-decorators'
 import { Icon } from '../types/AppTypes'
 
-@Module
+@Module({ name: 'App' })
 export default class App extends VuexModule {
   clipped:boolean= false;
   drawer:boolean= false;
@@ -28,4 +28,9 @@ export default class App extends VuexModule {
   right:boolean= true;
   rightDrawer:boolean= false;
   title:string= 'Vuetify.js'
+
+  @Mutation
+  toogleDrawer (drawer:boolean):boolean {
+    return !drawer
+  }
 }
