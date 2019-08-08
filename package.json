@@ -10,7 +10,8 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "dev-debug": "node --inspect node_modules/.bin/nuxt"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",

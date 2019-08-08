@@ -83,7 +83,7 @@
       :fixed="appStore.fixed"
       app
     >
-      <span>&copy; 2019</span>
+      <span>&copy; 2021</span>
     </v-footer>
   </v-app>
 </template>
@@ -91,13 +91,13 @@
 <script lang='ts'>
 import { Component, Vue } from 'nuxt-property-decorator'
 import { getModule } from 'vuex-module-decorators'
-import App from '../store/App'
+import App from '@/store/App'
 
 @Component({
 })
 export default class LogoComponent extends Vue {
-  get appStore ():App {
-    return getModule(App, this.$store)
+  get appStore () {
+    return App
   }
 }
 </script>
