@@ -1,5 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-
+import AutoDllPlugin from 'autodll-webpack-plugin'
 export default {
   mode: 'universal',
   /*
@@ -60,7 +60,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,

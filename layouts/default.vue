@@ -89,15 +89,13 @@
 </template>
 
 <script lang='ts'>
-import { Component, Vue } from 'nuxt-property-decorator'
-import { getModule } from 'vuex-module-decorators'
-import App from '@/store/App'
+import { Component, Vue, Prop } from 'nuxt-property-decorator'
+import { getModule} from 'vuex-module-decorators'
+import {appStore} from '../store/App';
 
 @Component({
 })
 export default class LogoComponent extends Vue {
-  get appStore () {
-    return App
-  }
+  
 }
 </script>

@@ -29,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
     "@vue/test-utils": "^1.0.0-beta.27",
+    "autodll-webpack-plugin": "^0.4.2",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
     "eslint": "^5.15.1",

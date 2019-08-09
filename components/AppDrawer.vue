@@ -27,12 +27,10 @@
 
 <script lang='ts'>
 import { Component, Vue } from 'nuxt-property-decorator'
-import  App from '@/store/App';
+import {appStore} from '../store/App';
 import { getModule } from 'vuex-module-decorators';
 @Component
 export default class LogoComponent extends Vue {
-  get appStore(){
-    return App;
-  }
+  
 }
 </script>

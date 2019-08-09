@@ -1,9 +1,9 @@
-import { Module, VuexModule, Mutation, getModule } from 'vuex-module-decorators'
+import { Module, VuexModule, Mutation, getModule, } from 'vuex-module-decorators'
 import { Icon } from '../types/AppTypes'
-import store from '@/store/index'
+import store from './index'
 
-@Module({ name: 'App', namespaced: true, store, dynamic: true })
-class App extends VuexModule {
+@Module({ stateFactory: true ,name: 'app',store })
+export  class AppModule extends VuexModule {
   clipped:boolean= false;
   drawer:boolean= false;
   fixed:boolean= false;
@@ -35,4 +35,6 @@ class App extends VuexModule {
     return !drawer
   }
 }
-export default getModule(App)
+let appStore:AppModule =  getModule(AppModule)
+export {appStore}
+ 
